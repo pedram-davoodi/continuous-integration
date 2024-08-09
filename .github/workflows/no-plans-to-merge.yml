@@ -1,6 +1,9 @@
 name: "No Plans to Merge"
 
-on: workflow_dispatch
+on:
+  pull_request:
+    types:
+      - closed
 
 jobs:
   no-plans-to-merge:
