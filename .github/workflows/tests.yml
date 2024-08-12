@@ -20,14 +20,14 @@ jobs:
           tools: composer:v2
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, gd, redis, igbinary, msgpack, lzf, zstd, lz4, memcached, gmp, :php-psr
 
+      - name: Install Project Dependencies
+        run: composer install -q --no-interaction --no-progress
+
       - name: Copy Environment File
         run: cp .env.example .env
 
       - name: Generate Application Key
         run: php artisan key:generate
-
-      - name: Install Project Dependencies
-        run: composer install -q --no-interaction --no-progress
 
       - name: Run Tests
         env:
