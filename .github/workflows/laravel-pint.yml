@@ -21,7 +21,7 @@ jobs:
         run: composer global require laravel/pint
 
       - name: Run Laravel Pint
-        run: pint --test
+        run: pint
 
       - name: Push Back to Repo
         run: |
