@@ -33,10 +33,10 @@ jobs:
           tools: composer:v2
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, gd, redis, igbinary, msgpack, lzf, zstd, lz4, memcached, gmp, :php-psr
 
-      - name: Cache Composer dependencies
+      - name: Cache dependencies
         uses: actions/cache@v4.0.2
         with:
-          key: composer-${{ hashFiles('**/composer.lock') }}
+          key: composer-cache-${{ hashFiles('**/composer.lock') }}
           path: vendor/
 
       - name: Install Project Dependencies
