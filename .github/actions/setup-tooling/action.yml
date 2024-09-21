@@ -16,6 +16,7 @@ runs:
     - name: Get extension cache hash
       id: extension-cache-hash
       run: echo hash=$(md5sum >> $INPUT_PHP-EXTENSIONS) >> $GITHUB_OUTPUT
+      shell: bash
 
     - name: Setup cache environment
       id: extcache
@@ -42,6 +43,7 @@ runs:
     - name: Get Composer cache dir
       id: composer-cache-dir
       run: echo dir=$(composer config cache-files-dir) >> $GITHUB_OUTPUT
+      shell: bash
 
     - name: Cache dependencies
       uses: actions/cache@v4.0.2
