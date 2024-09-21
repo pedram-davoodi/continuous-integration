@@ -12,11 +12,6 @@ inputs:
 
 runs:
   using: composite
-
-  env:
-    CACHE_KEY: extension-cache-v1
-    PHP_EXTENSIONS:
-
   steps:
     - name: Get extension cache hash
       id: extension-cache-hash
