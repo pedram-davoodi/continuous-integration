@@ -15,9 +15,6 @@ runs:
     PHP_EXTENSIONS: dom, curl, libxml, mbstring, zip, pcntl, pdo, gd, redis, igbinary, msgpack, lzf, zstd, lz4, memcached, gmp, :php-psr
 
   steps:
-    - name: Checkout Code
-      uses: actions/checkout@v4.1.7
-
     - name: Setup cache environment
       id: extcache
       uses: shivammathur/cache-extensions@v1
