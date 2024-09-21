@@ -22,11 +22,6 @@ jobs:
           MYSQL_DATABASE: laravel
           MYSQL_ALLOW_EMPTY_PASSWORD: yes
 
-    env:
-      PHP_VERSION: '8.3'
-      CACHE_KEY: extension-cache-v1
-      PHP_EXTENSIONS: dom, curl, libxml, mbstring, zip, pcntl, pdo, gd, redis, igbinary, msgpack, lzf, zstd, lz4, memcached, gmp, :php-psr
-
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4.1.7
