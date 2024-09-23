@@ -22,7 +22,7 @@ runs:
       shell: bash
 
     - name: Test
-      run: echo "${{ steps.get-cache-hash.cache-hash }}"
+      run: echo "${{ steps.get-cache-hash.outputs.cache-hash }}"
       shell: bash
 
     - name: Setup cache environment
