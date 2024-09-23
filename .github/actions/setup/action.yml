@@ -18,7 +18,7 @@ runs:
       id: get-cache-hash
       env:
         PHP_EXTENSIONS: ${{ inputs.php-extensions }}
-      run: echo "hash=$(echo $PHP_EXTENSIONS | md5sum | awk '{ print $1 }')" >> $GITHUB_OUTPUT
+      run: echo $PHP_EXTENSIONS | md5sum | awk '{ print $1 }')
       shell: bash
 
     - name: Setup cache environment
