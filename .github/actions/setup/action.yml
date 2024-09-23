@@ -21,6 +21,10 @@ runs:
       run: echo cache-hash=$(echo $PHP_EXTENSIONS | md5sum | awk '{ print $1 }') >> $GITHUB_OUTPUT
       shell: bash
 
+    - name: Test
+      run: echo "${{ steps.get-cache-hash.cache-hash }}"
+      shell: bash
+
     - name: Setup cache environment
       id: extcache
       uses: shivammathur/cache-extensions@v1
