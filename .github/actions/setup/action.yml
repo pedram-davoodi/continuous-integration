@@ -18,7 +18,7 @@ runs:
       id: get-cache-hash
       env:
         PHP_EXTENSIONS: ${{ inputs.php-extensions }}
-      run: echo hash=$(echo $PHP_EXTENSIONS | md5sum) >> $GITHUB_OUTPUT
+      run: echo hash=$(md5 -s $PHP_EXTENSIONS) >> $GITHUB_OUTPUT
       shell: bash
 
     - name: Setup cache environment
@@ -27,7 +27,7 @@ runs:
       with:
         php-version: ${{ inputs.php-version }}
         extensions: ${{ inputs.php-extensions }}
-        key: ${{ steps.get-cache-hash.hash }}
+        key: php-extensions-${{ steps.get-cache-hash.hash }}
 
     - name: Cache extensions
       uses: actions/cache@v4
