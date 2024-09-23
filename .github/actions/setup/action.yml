@@ -14,11 +14,15 @@ inputs:
 runs:
   using: composite
   steps:
+    - name: Test
+      run: md5 -s "test"
+      shell: bash
+
     - name: Get extension cache hash
       id: get-cache-hash
       env:
         PHP_EXTENSIONS: ${{ inputs.php-extensions }}
-      run: echo hash=$(echo md5 -s $PHP_EXTENSIONS) >> $GITHUB_OUTPUT
+      run: echo hash=$(md5 -s $PHP_EXTENSIONS) >> $GITHUB_OUTPUT
       shell: bash
 
     - name: Setup cache environment
