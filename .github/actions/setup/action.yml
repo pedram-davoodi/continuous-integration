@@ -10,6 +10,12 @@ inputs:
     description: The PHP extensions you want to install.
     required: false
     default: dom, curl, libxml, mbstring, zip, pcntl, pdo, gd, redis, igbinary, msgpack, lzf, zstd, lz4, memcached, gmp, :php-psr
+  nova-email:
+    description: The email licensed Laravel Nova.
+    required: true
+  nova-password:
+    description: The password licensed for Laravel Nova.
+    required: true
 
 runs:
   using: composite
@@ -57,7 +63,7 @@ runs:
 
     - name: Authenticate Nova
       env:
-        NOVA_EMAIL: ${{ secrets.NOVA_EMAIL }}
-        NOVA_PASSWORD: ${{ secrets.NOVA_PASSWORD }}
+        NOVA_EMAIL: ${{ inputs.nova-email }}
+        NOVA_PASSWORD: ${{ inputs.nova-password }}
       run: composer config http-basic.nova.laravel.com "$NOVA_EMAIL" "$NOVA_PASSWORD"
       shell: bash
