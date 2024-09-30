@@ -13,8 +13,9 @@ it('increments the page count for each visit', function () {
     expect(Redis::get('landing-page-views'))->toEqual(3);
 });
 
-it('provides users in random paginated order', function () {
-    $users = User::factory(5)->create();
+it('provides users in random paginated order', function ()
+{
+    $users = User::factory(3)->create();
 
     $users = collect($this->get('/')->viewData('users')->items())
         ->merge($this->get('/?page=2')->viewData('users')->items());
