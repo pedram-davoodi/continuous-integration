@@ -6,11 +6,18 @@ on:
       - Laravel Pint
     types:
       - completed
+  release:
+    types:
+      - published
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
+    environment: ${{ github.event_name == 'workflow_run' && 'staging' || 'production' }}
+
     steps:
       - name: Deploy to Forge
-        run: curl https://forge.laravel.com/servers/769810/sites/2484103/deploy/http?token=WaxNS8h9evUPNbKNWO4sI4oh6IFMBSpWQHJYjDHv
+        env:
+          DEPLOY_URL: ${{ vars.DEPLOY_URL }}
+        run: curl $DEPLOY_URL
