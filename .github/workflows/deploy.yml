@@ -1,0 +1,16 @@
+name: Deploy
+
+on:
+  workflow_run:
+    workflows:
+      - Laravel Pint
+    types:
+      - completed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to Forge
+        run: curl https://forge.laravel.com/servers/769810/sites/2484103/deploy/http?token=WaxNS8h9evUPNbKNWO4sI4oh6IFMBSpWQHJYjDHv
